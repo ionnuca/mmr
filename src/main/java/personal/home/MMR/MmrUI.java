@@ -2,6 +2,8 @@ package personal.home.MMR;
 
 import javax.servlet.annotation.WebServlet;
 
+import org.hibernate.Session;
+
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
@@ -9,7 +11,10 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Label;
+
+import personal.home.MMR.Utilities.HibernateUtil;
+import personal.home.MMR.entities.User;
+
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -24,6 +29,8 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mmrtheme")
 @Widgetset("personal.home.MMR.MyAppWidgetset")
 public class MmrUI extends UI {
+	
+	
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -32,10 +39,23 @@ public class MmrUI extends UI {
         final TextField name = new TextField();
         name.setCaption("Type your name here:");
 
-        Button button = new Button("Click Me");
+        Button button = new Button("Do not Click Me");
         button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+        	
+        	System.out.println("Maven + Hibernate + Oracle");
+    		Session session = HibernateUtil.getSessionFactory().openSession();
+
+    		session.beginTransaction();
+    		
+
+            User vasea = new User();
+            vasea.setUserName("Vasea");
+            vasea.setPassword("vasea");
+            
+            session.save(vasea);
+    		session.getTransaction().commit();
+    		
+//            dao.inserUser(vasea);
         });
         
         layout.addComponents(name, button);
