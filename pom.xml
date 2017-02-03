@@ -70,12 +70,12 @@
 		<!-- Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory). 
 			For widgetset compilation, vaadin-client-compiler is automatically added 
 			on the compilation classpath by vaadin-maven-plugin so normally there is 
-			no need for an explicit dependency. -->
-
+			no need for an explicit dependency.
+-->
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client-compiler</artifactId>
-		</dependency>
+		</dependency> 
 
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -89,7 +89,7 @@
 			<version>5.1.9</version>
 		</dependency>
 
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -101,8 +101,6 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
-		
-
 
 	</dependencies>
 
