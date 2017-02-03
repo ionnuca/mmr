@@ -1,12 +1,12 @@
 package personal.home.MMR;
 
-import javax.servlet.annotation.WebServlet;
+import javax.inject.Inject;
 
 import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.annotations.Title;
 import com.vaadin.annotations.Widgetset;
+import com.vaadin.cdi.CDIUI;
 import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -26,15 +26,15 @@ import personal.home.MMR.entities.User;
  */
 @Theme("mmrtheme")
 @Widgetset("personal.home.MMR.MyAppWidgetset")
-// @CDIUI("")
-// @Title("Prosto title")
+@CDIUI("")
+@Title("Prosto title")
 public class MmrUI extends UI {
 
 	// @Inject
 	// private CDIViewProvider viewProvider;
 
-	// @Inject
-	// private UserDao userDao;
+	@Inject
+	private UserDao userDao;
 
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
@@ -46,11 +46,10 @@ public class MmrUI extends UI {
 		Button button = new Button("Do not Click Me");
 		button.addClickListener(e -> {
 
-			UserDao dao = new UserDao();
 			User vasea = new User();
-			vasea.setUserName("Vasea12");
+			vasea.setUserName("Irina");
 			vasea.setPassword("vasea12");
-			dao.insertUser(vasea);
+			userDao.insertUser(vasea);
 		});
 
 		layout.addComponents(name, button);
@@ -60,8 +59,9 @@ public class MmrUI extends UI {
 		setContent(layout);
 	}
 
-	@WebServlet(urlPatterns = "/*", name = "MmrUIServlet", asyncSupported = true)
-	@VaadinServletConfiguration(ui = MmrUI.class, productionMode = false)
-	public static class MmrUIServlet extends VaadinServlet {
-	}
+	// @WebServlet(urlPatterns = "/*", name = "MmrUIServlet", asyncSupported =
+	// true)
+	// @VaadinServletConfiguration(ui = MmrUI.class, productionMode = false)
+	// public static class MmrUIServlet extends VaadinServlet {
+	// }
 }
