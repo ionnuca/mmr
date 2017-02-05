@@ -70,12 +70,11 @@
 		<!-- Needed when using the widgetset optimizer (custom ConnectorBundleLoaderFactory). 
 			For widgetset compilation, vaadin-client-compiler is automatically added 
 			on the compilation classpath by vaadin-maven-plugin so normally there is 
-			no need for an explicit dependency.
--->
+			no need for an explicit dependency. -->
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-client-compiler</artifactId>
-		</dependency> 
+		</dependency>
 
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -100,6 +99,35 @@
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
+		</dependency> 
+
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.4.1.Final</version>
+		</dependency>
+		
+		<dependency>
+		   <groupId>com.vaadin</groupId>
+		   <artifactId>vaadin-cdi</artifactId>
+		   <version>1.0.3</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>javax.enterprise</groupId>
+		    <artifactId>cdi-api</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		<dependency>
+	        <groupId>javax.annotation</groupId>
+	        <artifactId>javax.annotation-api</artifactId>
+	        <version>1.2-b01</version>
+	    </dependency>
+	    
+	    <dependency>
+		    <groupId>javax.inject</groupId>
+		    <artifactId>javax.inject</artifactId>
+		    <version>1</version>
 		</dependency>
 
 	</dependencies>
